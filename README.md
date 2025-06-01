@@ -108,4 +108,38 @@ for i in {1..100}; do
   -d '{"orderId": "order-'$i'", "type": "IN_STORE", "storeId": "store-1"}'
 done
 
+🛠️ Running Locally
+Start RabbitMQ via Docker:
+
+bash
+Copy
+Edit
+docker run -d --hostname rabbit --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+Start OrderService and InventoryService from your IDE or via CLI:
+
+bash
+Copy
+Edit
+./mvnw spring-boot:run
+
+Access RabbitMQ UI:
+
+makefile
+Copy
+Edit
+http://localhost:15672
+Username: guest
+Password: guest
+Use Swagger to send test orders and view available endpoints.
+
+🔮 Future Improvements
+💥 Implement DLQ monitoring and alerting for failed messages.
+
+🧩 Use Kafka for more scalable streaming event pipelines.
+
+🔁 Add Saga Pattern for multi-step transactional consistency across services.
+
+🧪 Add Prometheus + Grafana for observability and tracing.
+
+🗃️ Switch to Redis for distributed idempotency cache if scaling horizontally.
 
